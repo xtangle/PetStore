@@ -3,7 +3,6 @@ target/
 .settings/
 .svn/
 .classpath
-.gitattributes
 .project
 
 # Windows image file caches
