@@ -4,6 +4,7 @@ target/
 .svn/
 .classpath
 .project
+.factorypath
 
 # Windows image file caches
 Thumbs.db
