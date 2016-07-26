@@ -1,0 +1,13 @@
+@CHARSET "ISO-8859-1";
+
+#pet-data {
+  margin-top: 10px;
+}
+
+#delete-pet-button {
+  margin-top: 10px;
+}
+
+input {
+  padding: 0 0 0 6px;
+}

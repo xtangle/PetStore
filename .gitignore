@@ -1,3 +1,11 @@
+target/
+.git/
+.settings/
+.svn/
+.classpath
+.gitattributes
+.project
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
