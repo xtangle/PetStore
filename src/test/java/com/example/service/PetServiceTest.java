@@ -1,13 +1,11 @@
 package com.example.service;
 
-import static com.example.model.PetStatusType.*;
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.*;
-import static org.mockito.Mockito.*;
-
-import java.util.Arrays;
-import java.util.HashSet;
-
+import com.example.model.Category;
+import com.example.model.Pet;
+import com.example.model.Tag;
+import com.example.repository.ICategoryRepository;
+import com.example.repository.IPetRepository;
+import com.example.repository.ITagRepository;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,13 +22,20 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.example.model.Category;
-import com.example.model.Pet;
-import com.example.model.Tag;
-import com.example.repository.ICategoryRepository;
-import com.example.repository.IPetRepository;
-import com.example.repository.ITagRepository;
-import com.example.service.PetService;
+import java.util.Arrays;
+import java.util.HashSet;
+
+import static com.example.model.PetStatusType.AVAILABLE;
+import static com.example.model.PetStatusType.PENDING;
+import static com.example.model.PetStatusType.SOLD;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @FixMethodOrder(MethodSorters.DEFAULT)
 @RunWith(MockitoJUnitRunner.class)
@@ -217,9 +222,9 @@ public class PetServiceTest {
     expectedReturnedPet.setTags(Arrays.asList(tag1, tag2, tag3));
     expectedReturnedPet.setId(1);
 
-    when(mockedTag1.getPets()).thenReturn(new HashSet<>());
-    when(mockedTag2.getPets()).thenReturn(new HashSet<>());
-    when(mockedTag3.getPets()).thenReturn(new HashSet<>());
+    when(mockedTag1.getPets()).thenReturn(new HashSet<Pet>());
+    when(mockedTag2.getPets()).thenReturn(new HashSet<Pet>());
+    when(mockedTag3.getPets()).thenReturn(new HashSet<Pet>());
     when(mockedTag1.getName()).thenReturn(tag1.getName());
     when(mockedTag2.getName()).thenReturn(tag2.getName());
     when(mockedTag3.getName()).thenReturn(tag3.getName());

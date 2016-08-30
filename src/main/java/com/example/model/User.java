@@ -15,7 +15,7 @@ public class User implements IStorable {
   @Id
   @Column(name = "user_id")
   @SequenceGenerator(name = "ps_user_sequence", sequenceName = "PS_USER_SEQ", allocationSize = 1)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ps_user_sequence")
+  @GeneratedValue(strategy = GenerationType.AUTO, generator = "ps_user_sequence")
   private long id;
 
   @Column(name = "user_name", nullable = false, unique = true, length = 32)

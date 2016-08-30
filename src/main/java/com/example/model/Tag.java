@@ -1,7 +1,6 @@
 package com.example.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "PS_TAGS")
@@ -23,7 +22,7 @@ public class Tag implements IStorable {
   @Id
   @Column(name = "tag_id", nullable = false)
   @SequenceGenerator(name = "ps_tag_sequence", sequenceName = "PS_TAG_SEQ", allocationSize = 1)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ps_tag_sequence")
+  @GeneratedValue(strategy = GenerationType.AUTO, generator = "ps_tag_sequence")
   private long id;
 
   @Column(name = "tag_name", nullable = false, unique = true, length = 64)

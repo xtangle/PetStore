@@ -1,8 +1,5 @@
 package com.example.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -17,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "PS_PETS")
@@ -25,7 +24,7 @@ public class Pet implements IStorable {
   @Id
   @Column(name = "pet_id")
   @SequenceGenerator(name = "ps_pet_sequence", sequenceName = "PS_PET_SEQ", allocationSize = 1)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ps_pet_sequence")
+  @GeneratedValue(strategy = GenerationType.AUTO, generator = "ps_pet_sequence")
   private long id;
 
   @ManyToOne(fetch = FetchType.EAGER)
