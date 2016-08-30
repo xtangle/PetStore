@@ -1,11 +1,21 @@
-target/
 .idea/
+*.iml
+
 .git/
 .settings/
 .svn/
 .classpath
 .project
 .factorypath
+.springBeans
+pom.xml.versionsBackup
+
+target/
+dist/
+
+node_modules/
+.tmp/
+npm-debug.log
 
 # Windows image file caches
 Thumbs.db

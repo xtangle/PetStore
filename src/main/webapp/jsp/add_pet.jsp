@@ -8,8 +8,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <title>Add Pet</title>
   <jsp:include page="common/head.jsp"></jsp:include>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/add_pet.css">
-  <script src="${pageContext.request.contextPath}/static/js/petApp.js"></script>
+  <link rel="stylesheet" type="text/styles" href="${pageContext.request.contextPath}/assets/styles/add_pet.css">
+  <script src="${pageContext.request.contextPath}/assets/js/petApp.js"></script>
 </head>
 
 <body>

@@ -7,8 +7,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <title>Find Pet</title>
   <jsp:include page="common/head.jsp"></jsp:include>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/find_pet.css">
-  <script src="${pageContext.request.contextPath}/static/js/petApp.js"></script>
+  <link rel="stylesheet" type="text/styles" href="${pageContext.request.contextPath}/assets/styles/find_pet.css">
+  <script src="${pageContext.request.contextPath}/assets/js/petApp.js"></script>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
   
         <div class="main-box centered" data-ng-app="petApp" data-ng-controller="petController">
           <h1 class="main-header">Find a Pet</h1>
-          
+
           <p class="success-msg" data-ng-show="successMsg">{{successMsg}}</p>
           <p class="error-msg" data-ng-show="errorMsg">{{errorMsg}}</p>
           

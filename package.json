@@ -1,11 +1,8 @@
 {
+  "private": "true",
   "name": "petstore",
   "version": "0.0.1",
   "description": "A sample pet store project",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xtangle/PetStore.git"
@@ -19,5 +16,22 @@
   "bugs": {
     "url": "https://github.com/xtangle/PetStore/issues"
   },
-  "homepage": "https://github.com/xtangle/PetStore#readme"
+  "homepage": "https://github.com/xtangle/PetStore#readme",
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "browser": {
+    "jquery": "./node_modules/jquery/dist/jquery.js",
+    "angular": "angular"
+  },
+  "dependencies": {
+    "angular": "1.5.8"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.5.8",
+    "gulp": "3.9.1"
+  }
 }
