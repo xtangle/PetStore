@@ -1,0 +1,23 @@
+{
+  "name": "petstore",
+  "version": "0.0.1",
+  "description": "A sample pet store project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xtangle/PetStore.git"
+  },
+  "keywords": [
+    "pet",
+    "store"
+  ],
+  "author": "Jacky Xu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xtangle/PetStore/issues"
+  },
+  "homepage": "https://github.com/xtangle/PetStore#readme"
+}

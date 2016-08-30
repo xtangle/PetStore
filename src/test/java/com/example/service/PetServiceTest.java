@@ -1,4 +1,4 @@
-package com.fdmgroup.service;
+package com.example.service;
 
 import static com.example.model.PetStatusType.*;
 import static org.junit.Assert.*;
@@ -52,14 +52,13 @@ public class PetServiceTest {
   PetService petService;
 
   static int testCount;
-
-  static final String DIVIDER = new String(new char[100]).replace("\0", "-");
+  static final String TEST_DIVIDER = new String(new char[100]).replace("\0", "-");
 
   @Rule
   public TestRule watcher = new TestWatcher() {
     @Override
     protected void starting(Description description) {
-      System.out.println(DIVIDER);
+      System.out.println(TEST_DIVIDER);
       System.out.println("Starting test " + (++testCount) + ": " + description.getMethodName());
     }
   };
@@ -70,7 +69,7 @@ public class PetServiceTest {
 
   @AfterClass
   public static void tearDownAfterClass() throws Exception {
-    System.out.println(DIVIDER);
+    System.out.println(TEST_DIVIDER);
   }
 
   @Before
