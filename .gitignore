@@ -13,7 +13,7 @@ pom.xml.versionsBackup
 target/
 dist/
 
-node_modules/
+**/node_modules/
 .tmp/
 npm-debug.log
 

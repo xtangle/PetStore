@@ -1,12 +1,12 @@
 
 var _ = require('lodash');
-var defaultConf = require('./js/conf');
+var defaultConf = require('./src/conf');
 
-// var browserify = require('./js/browserify');
-var build = require('./js/build');
-// var dist = require('./js/dist');
-// var serve = require('./js/serve');
-// var test = require('./js/test');
+// var browserify = require('./src/browserify');
+var build = require('./src/build');
+// var dist = require('./src/dist');
+var serve = require('./src/serve');
+// var test = require('./src/test');
 
 function configure(gulp, conf) {
   conf = _.defaultsDeep(conf, defaultConf);
@@ -14,7 +14,7 @@ function configure(gulp, conf) {
   // browserify(gulp, conf);
   build(gulp, conf);
   // dist(gulp, conf);
-  // serve(gulp, conf);
+  serve(gulp, conf);
   // test(gulp, conf);
 
   gulp.task('default', ['build']);

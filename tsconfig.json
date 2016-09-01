@@ -10,6 +10,7 @@
     "noImplicitAny": true
   },
   "exclude": [
+    "gulp",
     "node_modules",
     "target",
     "typings"

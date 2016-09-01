@@ -21,8 +21,9 @@ module.exports = function (gulp, conf) {
   gulp.task('build:compile', function () {
     var tsProject = typescript.createProject('tsconfig.json');
     var tsResult = tsProject.src()
-      .pipe(tslint())
-      .pipe(tslint.report('prose', { emitError: false }))
+      .pipe(tslint({
+        formatter: "verbose"
+      }))
       .pipe(typescript(tsProject));
     return tsResult.js.pipe(gulp.dest('.tmp/javascript'));
   });
