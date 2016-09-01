@@ -70,6 +70,25 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+
+<!--      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>1.0</version>
+        <configuration>
+          <installDirectory>${NODE_PATH}</installDirectory>
+        </configuration>
+
+        <executions>
+          <execution>
+            <id>gulp build</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>gulp</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>-->
     </plugins>
   </build>
   
