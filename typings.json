@@ -1,6 +1,12 @@
 {
   "globalDependencies": {
     "angular": "registry:dt/angular#1.5.0+20160829152510",
-    "bootstrap": "registry:dt/bootstrap#3.3.5+20160619023404"
+    "bootstrap": "registry:dt/bootstrap#3.3.5+20160619023404",
+    "jquery": "registry:dt/jquery#1.10.0+20160704162008",
+    "lodash": "registry:dt/lodash#4.14.0+20160830145422",
+    "node": "registry:env/node#6.0.0+20160902022231"
+  },
+  "dependencies": {
+    "debug": "registry:npm/debug#2.0.0+20160723033700"
   }
 }

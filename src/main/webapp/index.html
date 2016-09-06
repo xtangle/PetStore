@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="com.example.petStoreApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Pet Store</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="application-name" content="Pet Store"/>
+    <meta name="version" content="{{ BUILD_INFO.version }}"/>
+    <meta name="created" content="{{ BUILD_INFO.timestamp }}"/>
+    <link rel="stylesheet" href="styles/index.css"/>
+</head>
+<body>
+
+<!--[if lt IE 9]>
+
+<div class="row alert alert-error">
+    <div class="col-xs-12 notice">
+        <span class="fa fa-ban"></span>
+        <span>Your browser is not supported.</span>
+    </div>
+</div>
+
+<![endif]-->
+
+    <div ui-view></div>
+
+    <script type="text/javascript" src="scripts/vendor.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+
+</body>
+</html>
