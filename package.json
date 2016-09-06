@@ -1,7 +1,7 @@
 {
   "private": "true",
   "name": "petstore",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A sample pet store project",
   "repository": {
     "type": "git",
