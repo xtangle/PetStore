@@ -1,20 +1,26 @@
 package com.example.service.impl;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.bo.PetBO;
+import com.example.bo.PetStatusType;
 import com.example.bo.TagBO;
+import com.example.dto.NamedObjectDTO;
 import com.example.dto.PetDTO;
 import com.example.repository.PetRepository;
 import com.example.repository.TagRepository;
-import com.example.service.IPetService;
+import com.example.service.PetService;
+import com.example.transform.NamedObjectTransformer;
 import com.example.transform.PetTransformer;
 
 @Service
 @Transactional
-public class PetServiceImpl implements IPetService {
+public class PetServiceImpl implements PetService {
 
 	@Autowired
 	private PetRepository petRepository;
@@ -24,6 +30,9 @@ public class PetServiceImpl implements IPetService {
 
 	@Autowired
 	private PetTransformer petTransformer;
+
+	@Autowired
+	private NamedObjectTransformer namedObjectTransformer;
 
 	@Override
 	public PetDTO getPet(long petId) {
@@ -65,6 +74,11 @@ public class PetServiceImpl implements IPetService {
 		}
 		petRepository.delete(petId);
 		return true;
+	}
+
+	@Override
+	public List<NamedObjectDTO> getPetStatuses() {
+		return namedObjectTransformer.toDTOList(Arrays.asList(PetStatusType.values()));
 	}
 
 }

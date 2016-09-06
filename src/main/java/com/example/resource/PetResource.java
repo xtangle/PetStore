@@ -4,23 +4,26 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.Response;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.dto.NamedObjectDTO;
 import com.example.dto.PetDTO;
-import com.example.service.impl.PetServiceImpl;
+import com.example.service.PetService;
 
 @RestController
 @JsonRequestMapping(value = "api/pet")
 public class PetResource {
 
 	@Autowired
-	private PetServiceImpl petService;
+	private PetService petService;
 
 	@JsonRequestMapping(method = RequestMethod.POST)
 	public void addPet(@RequestBody PetDTO petDTO, HttpServletResponse response) throws IOException {
@@ -47,8 +50,7 @@ public class PetResource {
 	}
 
 	@RequestMapping(path = "/{petIdString}", method = RequestMethod.DELETE)
-	public boolean deletePet(@PathVariable String petIdString, HttpServletResponse response)
-		throws IOException {
+	public boolean deletePet(@PathVariable String petIdString, HttpServletResponse response) throws IOException {
 		long petId;
 		try {
 			petId = Long.parseLong(petIdString);
@@ -61,6 +63,12 @@ public class PetResource {
 			return false;
 		}
 		return petService.deletePet(petId);
+	}
+
+	@RequestMapping(path = "/status", method = RequestMethod.GET)
+	@Cacheable("api.pet.status")
+	public List<NamedObjectDTO> getPetStatuses() {
+		return petService.getPetStatuses();
 	}
 
 }

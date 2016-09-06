@@ -3,6 +3,7 @@ package com.example.transform;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -28,4 +29,8 @@ public class PetTransformerTest {
 		initMocks(this);
 	}
 
+	@Test
+	public void toDTO_shouldTransformToDTO() {
+
+	}
 }
