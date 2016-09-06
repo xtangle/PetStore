@@ -1,4 +1,4 @@
-package com.example.model;
+package com.example.bo;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -14,12 +14,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "PS_PETS")
-public class Pet implements IStorable {
+public class PetBO implements IStorable, Serializable {
+
+  private static final long serialVersionUID = 5228540098964594713L;
 
   @Id
   @Column(name = "pet_id")
@@ -28,7 +31,7 @@ public class Pet implements IStorable {
   private long id;
 
   @ManyToOne(fetch = FetchType.EAGER)
-  private Category category;
+  private CategoryBO category;
 
   @Column(name = "pet_name", nullable = false)
   private String name;
@@ -38,17 +41,17 @@ public class Pet implements IStorable {
   private List<String> photoURLs;
 
   @ManyToMany(fetch = FetchType.EAGER)
-  private List<Tag> tags;
+  private List<TagBO> tags;
 
   @Column(name = "status")
   @Enumerated(EnumType.STRING)
   private PetStatusType status;
 
-  public Pet() {
+  public PetBO() {
     this(null, null, null);
   }
 
-  public Pet(Category category, String name, PetStatusType status) {
+  public PetBO(CategoryBO category, String name, PetStatusType status) {
     super();
     this.category = category;
     this.name = name;
@@ -65,11 +68,11 @@ public class Pet implements IStorable {
     this.id = id;
   }
 
-  public Category getCategory() {
+  public CategoryBO getCategory() {
     return category;
   }
 
-  public void setCategory(Category category) {
+  public void setCategory(CategoryBO category) {
     this.category = category;
   }
 
@@ -89,11 +92,11 @@ public class Pet implements IStorable {
     this.photoURLs = photoURLs;
   }
 
-  public List<Tag> getTags() {
+  public List<TagBO> getTags() {
     return tags;
   }
 
-  public void setTags(List<Tag> tags) {
+  public void setTags(List<TagBO> tags) {
     this.tags = tags;
   }
 
@@ -121,7 +124,7 @@ public class Pet implements IStorable {
       return false;
     if (getClass() != obj.getClass())
       return false;
-    Pet other = (Pet) obj;
+    PetBO other = (PetBO) obj;
     if (id != other.id)
       return false;
     return true;
@@ -129,7 +132,7 @@ public class Pet implements IStorable {
 
   @Override
   public String toString() {
-    return "Pet [id=" + id + ", category=" + category + ", name=" + name + ", photoURLs=" + photoURLs + ", tags=" + tags
+    return "PetBO [id=" + id + ", category=" + category + ", name=" + name + ", photoURLs=" + photoURLs + ", tags=" + tags
         + ", status=" + status + "]";
   }
 

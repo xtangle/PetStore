@@ -1,6 +1,4 @@
-package com.example.model;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+package com.example.bo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,13 +9,19 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "PS_TAGS")
 @JsonIgnoreProperties({ "pets" })
-public class Tag implements IStorable {
+public class TagBO implements IStorable, INamedObject, Serializable {
+
+  private static final long serialVersionUID = -8161026493237883515L;
 
   @Id
   @Column(name = "tag_id", nullable = false)
@@ -29,13 +33,13 @@ public class Tag implements IStorable {
   private String name;
 
   @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
-  private Set<Pet> pets;
+  private Set<PetBO> pets;
 
-  public Tag() {
+  public TagBO() {
     this(null);
   }
 
-  public Tag(String name) {
+  public TagBO(String name) {
     super();
     this.name = name;
     this.pets = new HashSet<>();
@@ -49,6 +53,7 @@ public class Tag implements IStorable {
     this.id = id;
   }
 
+  @Override
   public String getName() {
     return name;
   }
@@ -57,11 +62,11 @@ public class Tag implements IStorable {
     this.name = name;
   }
 
-  public Set<Pet> getPets() {
+  public Set<PetBO> getPets() {
     return pets;
   }
 
-  public void setPets(Set<Pet> pets) {
+  public void setPets(Set<PetBO> pets) {
     this.pets = pets;
   }
 
@@ -81,7 +86,7 @@ public class Tag implements IStorable {
       return false;
     if (getClass() != obj.getClass())
       return false;
-    Tag other = (Tag) obj;
+    TagBO other = (TagBO) obj;
     if (id != other.id)
       return false;
     return true;
@@ -89,7 +94,7 @@ public class Tag implements IStorable {
 
   @Override
   public String toString() {
-    return "Tag [id=" + id + ", name=" + name + "]";
+    return "TagBO [id=" + id + ", name=" + name + "]";
   }
 
 }

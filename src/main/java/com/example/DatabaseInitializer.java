@@ -8,41 +8,41 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.model.Category;
-import com.example.model.Pet;
-import com.example.model.PetStatusType;
-import com.example.model.Tag;
-import com.example.repository.ICategoryRepository;
-import com.example.repository.IPetRepository;
-import com.example.repository.ITagRepository;
+import com.example.bo.CategoryBO;
+import com.example.bo.PetBO;
+import com.example.bo.PetStatusType;
+import com.example.bo.TagBO;
+import com.example.repository.CategoryRepository;
+import com.example.repository.PetRepository;
+import com.example.repository.TagRepository;
 
 @SpringBootApplication
 public class DatabaseInitializer implements ApplicationRunner {
 
   @Autowired
-  IPetRepository petRepository;
+  PetRepository petRepository;
   @Autowired
-  ICategoryRepository categoryRepository;
+  CategoryRepository categoryRepository;
   @Autowired
-  ITagRepository tagRepository;
+  TagRepository tagRepository;
 
   @Override
   public void run(ApplicationArguments arg0) throws Exception {
     // Populate the database with some initial entities
-    Category sampleCategory1 = new Category("Dog");
-    Category sampleCategory2 = new Category("Cat");
-    Category sampleCategory3 = new Category("Rabbit");
+    CategoryBO sampleCategory1 = new CategoryBO("Dog");
+    CategoryBO sampleCategory2 = new CategoryBO("Cat");
+    CategoryBO sampleCategory3 = new CategoryBO("Rabbit");
 
-    Tag sampleTag1 = new Tag("Domestic");
-    Tag sampleTag2 = new Tag("Rescued");
-    Tag sampleTag3 = new Tag("Aggressive");
-    Tag sampleTag4 = new Tag("Tame");
-    Tag sampleTag5 = new Tag("White");
-    Tag sampleTag6 = new Tag("Cute");
+    TagBO sampleTag1 = new TagBO("Domestic");
+    TagBO sampleTag2 = new TagBO("Rescued");
+    TagBO sampleTag3 = new TagBO("Aggressive");
+    TagBO sampleTag4 = new TagBO("Tame");
+    TagBO sampleTag5 = new TagBO("White");
+    TagBO sampleTag6 = new TagBO("Cute");
 
-    Pet samplePet1 = new Pet(sampleCategory1, "Woofie", PetStatusType.AVAILABLE);
-    Pet samplePet2 = new Pet(sampleCategory2, "Snowball", PetStatusType.SOLD);
-    Pet samplePet3 = new Pet(sampleCategory3, "Bunbun", PetStatusType.PENDING);
+    PetBO samplePet1 = new PetBO(sampleCategory1, "Woofie", PetStatusType.AVAILABLE);
+    PetBO samplePet2 = new PetBO(sampleCategory2, "Snowball", PetStatusType.SOLD);
+    PetBO samplePet3 = new PetBO(sampleCategory3, "Bunbun", PetStatusType.PENDING);
 
     sampleCategory1.getPets().add(samplePet1);
     sampleCategory2.getPets().add(samplePet2);

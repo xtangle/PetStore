@@ -1,4 +1,4 @@
-package com.example.model;
+package com.example.bo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,10 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "PS_USERS")
-public class User implements IStorable {
+public class UserBO implements IStorable, Serializable {
+
+  private static final long serialVersionUID = 1923146508106527972L;
 
   @Id
   @Column(name = "user_id")
@@ -39,11 +42,11 @@ public class User implements IStorable {
   @Column(name = "user_status")
   private int status;
 
-  public User() {
+  public UserBO() {
     this(null, null, null, null, null, null);
   }
 
-  public User(String username, String firstName, String lastName, String email, String password, String phoneNumber) {
+  public UserBO(String username, String firstName, String lastName, String email, String password, String phoneNumber) {
     super();
     this.username = username;
     this.firstName = firstName;
@@ -134,7 +137,7 @@ public class User implements IStorable {
       return false;
     if (getClass() != obj.getClass())
       return false;
-    User other = (User) obj;
+    UserBO other = (UserBO) obj;
     if (id != other.id)
       return false;
     return true;
@@ -142,7 +145,7 @@ public class User implements IStorable {
 
   @Override
   public String toString() {
-    return "User [id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName
+    return "UserBO [id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName
         + ", email=" + email + ", password=" + password + ", phoneNumber=" + phoneNumber + ", status=" + status + "]";
   }
 

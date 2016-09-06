@@ -11,7 +11,7 @@ var buffer = require('vinyl-buffer');
 
 var sourcemaps = require('gulp-sourcemaps');
 
-var customOpts = { entries: ['.tmp/javascript/index.js'], debug: true, transform: [browserifyShim]};
+var customOpts = { /*entries: ['.tmp/javascript/index.js'], */debug: true, transform: [browserifyShim]};
 var opts = _.assign({}, watchify.args, customOpts);
 var b = browserify(opts);
 

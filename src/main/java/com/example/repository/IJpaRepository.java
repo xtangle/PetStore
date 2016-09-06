@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
-import com.example.model.IStorable;
+import com.example.bo.IStorable;
 
 @NoRepositoryBean
 public interface IJpaRepository<T extends IStorable, ID extends Serializable> extends JpaRepository<T, ID> {

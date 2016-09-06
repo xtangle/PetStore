@@ -1,4 +1,4 @@
-package com.example.model;
+package com.example.bo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -11,13 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "PS_CATEGORIES")
 @JsonIgnoreProperties({ "pets" })
-public class Category implements IStorable {
+public class CategoryBO implements IStorable, INamedObject, Serializable {
+
+  private static final long serialVersionUID = 7258630973067387309L;
 
   @Id
   @Column(name = "category_id")
@@ -29,13 +32,13 @@ public class Category implements IStorable {
   private String name;
 
   @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-  private Set<Pet> pets;
+  private Set<PetBO> pets;
 
-  public Category() {
+  public CategoryBO() {
     this(null);
   }
 
-  public Category(String name) {
+  public CategoryBO(String name) {
     super();
     this.name = name;
     this.pets = new HashSet<>();
@@ -49,6 +52,7 @@ public class Category implements IStorable {
     this.id = id;
   }
 
+  @Override
   public String getName() {
     return name;
   }
@@ -57,11 +61,11 @@ public class Category implements IStorable {
     this.name = name;
   }
 
-  public Set<Pet> getPets() {
+  public Set<PetBO> getPets() {
     return pets;
   }
 
-  public void setPets(Set<Pet> pets) {
+  public void setPets(Set<PetBO> pets) {
     this.pets = pets;
   }
 
@@ -81,7 +85,7 @@ public class Category implements IStorable {
       return false;
     if (getClass() != obj.getClass())
       return false;
-    Category other = (Category) obj;
+    CategoryBO other = (CategoryBO) obj;
     if (id != other.id)
       return false;
     return true;
@@ -89,7 +93,7 @@ public class Category implements IStorable {
 
   @Override
   public String toString() {
-    return "Category [id=" + id + ", name=" + name + "]";
+    return "CategoryBO [id=" + id + ", name=" + name + "]";
   }
 
 }

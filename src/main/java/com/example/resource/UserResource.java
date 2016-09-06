@@ -1,21 +1,22 @@
 package com.example.resource;
 
-import com.example.model.Category;
-import com.example.model.PetStatusType;
-import com.example.repository.ICategoryRepository;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Arrays;
-import java.util.List;
+import com.example.bo.CategoryBO;
+import com.example.bo.PetStatusType;
+import com.example.repository.CategoryRepository;
 
 @Controller
 public class UserResource {
 
   @Autowired
-  ICategoryRepository categoryRepository;
+  CategoryRepository categoryRepository;
 
   @RequestMapping(value = { "/", "index" })
   public String loadHomePage() {
@@ -24,7 +25,7 @@ public class UserResource {
 
   @RequestMapping(value = { "addPet" })
   public String loadAddPetPage(Model model) {
-    List<Category> categories = categoryRepository.findAll();
+    List<CategoryBO> categories = categoryRepository.findAll();
     List<PetStatusType> petStatusTypes = Arrays.asList(PetStatusType.values());
     model.addAttribute("categories", categories);
     model.addAttribute("petStatusTypes", petStatusTypes);
