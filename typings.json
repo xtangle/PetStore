@@ -1,6 +1,9 @@
 {
   "globalDependencies": {
     "angular": "registry:dt/angular#1.5.0+20160829152510",
+    "angular-mocks": "registry:dt/angular-mocks#1.5.0+20160608104721",
+    "angular-resource": "registry:dt/angular-resource#1.5.0+20160613142217",
+    "angular-ui-router": "registry:dt/angular-ui-router#1.1.5+20160810191828",
     "bootstrap": "registry:dt/bootstrap#3.3.5+20160619023404",
     "jquery": "registry:dt/jquery#1.10.0+20160704162008",
     "lodash": "registry:dt/lodash#4.14.0+20160830145422",

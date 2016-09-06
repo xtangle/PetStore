@@ -1,14 +1,14 @@
-
 exports.app = {
-  api: '',
-  ngModule: '',
-  global: []
+    api: '',
+    ngModule: '',
+    global: []
 };
 
 exports.index = {
-  sass: ''
+    sass: ''
 };
 
 exports.paths = {
-  fonts: ''
+    fonts: '',
+    src: ''
 };

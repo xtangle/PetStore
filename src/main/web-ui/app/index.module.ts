@@ -5,12 +5,11 @@
 module com.example {
 
   angular.module('com.example.petStoreApp', [
-
+    require('angular-ui-router')
   ])
     .config(($compileProvider: ng.ICompileProvider, $logProvider: ng.ILogProvider) => {
       $compileProvider.debugInfoEnabled(true);
       $logProvider.debugEnabled(true);
     })
     .config(RouterConfig);
-
 }

@@ -28,14 +28,22 @@
     "jquery": "./node_modules/jquery/dist/jquery.js",
     "angular": "angular"
   },
+  "browserify-shim": {
+    "jquery": "jQuery",
+    "angular": "angular"
+  },
   "dependencies": {
     "angular": "1.5.8",
-    "bootstrap": "3.3.7"
+    "angular-resource": "1.5.8",
+    "angular-ui-router": "0.3.1",
+    "bootstrap": "3.3.7",
+    "jquery": "3.1.0",
+    "lodash": "4.15.0"
   },
   "devDependencies": {
     "gulp-app-module": "0.0.1",
     "angular-mocks": "1.5.8",
-    "browser-sync": "2.14.3",
+    "browser-sync": "2.15.0",
     "gulp": "3.9.1",
     "typings": "1.3.3"
   }
