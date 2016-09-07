@@ -8,8 +8,8 @@ module com.example {
 
       $stateProvider
         .state('default', {
-          abstract: true,
-          template: '<ui-view />',
+          templateUrl: 'app/home/home.html',
+          url: '/',
         });
     }
   }

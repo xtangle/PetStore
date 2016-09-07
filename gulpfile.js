@@ -14,7 +14,7 @@ gulpApp.configure(gulp, {
     app: {
         api: 'http://localhost:8088/petstore/',
         ngModule: 'com.example.petStoreApp',
-        srcDir: 'src/main/web-ui',
+        baseDir: 'src/main/web-ui',
         global: [
             'node_modules/jquery/dist/jquery.js',
             'node_modules/angular/angular.js',
@@ -22,10 +22,12 @@ gulpApp.configure(gulp, {
         ]
     },
     index: {
-        sass: ''
+        sass: 'src/main/web-ui/assets/styles/index.scss'
     },
     paths: {
         fonts: '',
-        src: 'src/main/web-ui'
+        images: 'src/main/web-ui/assets/images',
+        src: 'src/main/web-ui/app',
+        styles: 'src/main/web-ui/assets/styles'
     }
 });

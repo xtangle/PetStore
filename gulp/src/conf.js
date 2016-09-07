@@ -1,6 +1,7 @@
 exports.app = {
     api: '',
     ngModule: '',
+    baseDir: '',
     global: []
 };
 
@@ -10,5 +11,7 @@ exports.index = {
 
 exports.paths = {
     fonts: '',
-    src: ''
+    images: '',
+    src: '',
+    styles: ''
 };
