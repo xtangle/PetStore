@@ -1,11 +1,11 @@
 var _ = require('lodash');
-var defaultConf = require('./src/conf');
+var defaultConf = require('./gulp/conf');
 
-var browserify = require('./src/browserify');
-var build = require('./src/build');
-var clean = require('./src/clean');
-var serve = require('./src/serve');
-var test = require('./src/test');
+var browserify = require('./gulp/browserify');
+var build = require('./gulp/build');
+var clean = require('./gulp/clean');
+var serve = require('./gulp/serve');
+var test = require('./gulp/test');
 
 function configure(gulp, conf) {
     conf = _.defaultsDeep(conf, defaultConf);

@@ -9,7 +9,7 @@
     "outFile": "index.js"
   },
   "exclude": [
-    "gulp",
+    "gulp-micro-app",
     "node_modules",
     "target",
     "typings"

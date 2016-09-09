@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.bo.PetBO;
-import com.example.bo.PetStatusType;
+import com.example.bo.PetStatus;
 import com.example.bo.TagBO;
-import com.example.dto.NamedObjectDTO;
 import com.example.dto.PetDTO;
+import com.example.repository.CategoryRepository;
 import com.example.repository.PetRepository;
 import com.example.repository.TagRepository;
 import com.example.service.PetService;
@@ -24,6 +24,9 @@ public class PetServiceImpl implements PetService {
 
 	@Autowired
 	private PetRepository petRepository;
+
+	@Autowired
+	CategoryRepository categoryRepository;
 
 	@Autowired
 	private TagRepository tagRepository;
@@ -40,9 +43,9 @@ public class PetServiceImpl implements PetService {
 	}
 
 	@Override
-	public boolean addPet(PetDTO petDTO) {
+	public PetDTO addPet(PetDTO petDTO) {
 		if (petDTO == null) {
-			return false;
+			return null;
 		}
 
 		petDTO.getTags().forEach(tagName -> {
@@ -55,7 +58,7 @@ public class PetServiceImpl implements PetService {
 
 		PetBO petBO = petTransformer.toBO(petDTO);
 		if (petBO.getCategory() == null) {
-			return false;
+			return null;
 		}
 
 		petBO.getCategory().getPets().add(petBO);
@@ -63,8 +66,7 @@ public class PetServiceImpl implements PetService {
 			tagBO.getPets().add(petBO);
 		});
 
-		petRepository.save(petBO);
-		return true;
+		return petTransformer.toDTO(petRepository.save(petBO));
 	}
 
 	@Override
@@ -77,8 +79,13 @@ public class PetServiceImpl implements PetService {
 	}
 
 	@Override
-	public List<NamedObjectDTO> getPetStatuses() {
-		return namedObjectTransformer.toDTOList(Arrays.asList(PetStatusType.values()));
+	public List<String> getPetCategories() {
+		return namedObjectTransformer.toDTOList(categoryRepository.findAll());
+	}
+
+	@Override
+	public List<String> getPetStatuses() {
+		return namedObjectTransformer.toDTOList(Arrays.asList(PetStatus.values()));
 	}
 
 }

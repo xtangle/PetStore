@@ -1,5 +1,5 @@
-'use strict';
 module com.example {
+  'use strict';
 
   export class RouterConfig {
     /* @ngInject */
@@ -7,8 +7,8 @@ module com.example {
       $urlRouterProvider.otherwise('/');
 
       $stateProvider
-        .state('default', {
-          templateUrl: 'app/home/home.html',
+        .state('home', {
+          templateUrl: 'app/petstore/home/home.html',
           url: '/',
         });
     }

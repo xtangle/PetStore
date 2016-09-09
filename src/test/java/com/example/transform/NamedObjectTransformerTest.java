@@ -14,7 +14,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.example.bo.INamedObject;
-import com.example.dto.NamedObjectDTO;
 
 @RunWith(MockitoJUnitRunner.class)
 public class NamedObjectTransformerTest {
@@ -36,9 +35,9 @@ public class NamedObjectTransformerTest {
 
 		when(mockedNamedObject.getName()).thenReturn("test name");
 
-		NamedObjectDTO actual = fixture.toDTO(mockedNamedObject);
+		String actual = fixture.toDTO(mockedNamedObject);
 		assertNotNull(actual);
-		assertEquals("test name", actual.getName());
+		assertEquals("test name", actual);
 	}
 
 }

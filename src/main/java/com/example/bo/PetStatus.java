@@ -3,11 +3,11 @@ package com.example.bo;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 
-public enum PetStatusType implements INamedObject {
+public enum PetStatus implements INamedObject {
 
   AVAILABLE, PENDING, SOLD;
 
-  public static PetStatusType getByName(String name) {
+  public static PetStatus getByName(String name) {
     return valueOf(StringUtils.upperCase(name));
   }
 

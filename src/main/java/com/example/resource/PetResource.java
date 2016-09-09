@@ -10,11 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.dto.NamedObjectDTO;
 import com.example.dto.PetDTO;
 import com.example.service.PetService;
 
@@ -26,10 +24,12 @@ public class PetResource {
 	private PetService petService;
 
 	@JsonRequestMapping(method = RequestMethod.POST)
-	public void addPet(@RequestBody PetDTO petDTO, HttpServletResponse response) throws IOException {
-		if (!petService.addPet(petDTO)) {
+	public PetDTO addPet(@RequestBody PetDTO petDTO, HttpServletResponse response) throws IOException {
+		PetDTO savedPet = petService.addPet(petDTO);
+		if (savedPet == null) {
 			response.sendError(Response.Status.METHOD_NOT_ALLOWED.getStatusCode(), "Invalid input");
 		}
+		return savedPet;
 	}
 
 	@JsonRequestMapping(value = "/{petIdString}", method = RequestMethod.GET)
@@ -49,7 +49,7 @@ public class PetResource {
 		return petDTO;
 	}
 
-	@RequestMapping(path = "/{petIdString}", method = RequestMethod.DELETE)
+	@JsonRequestMapping(value = "/{petIdString}", method = RequestMethod.DELETE)
 	public boolean deletePet(@PathVariable String petIdString, HttpServletResponse response) throws IOException {
 		long petId;
 		try {
@@ -65,9 +65,15 @@ public class PetResource {
 		return petService.deletePet(petId);
 	}
 
-	@RequestMapping(path = "/status", method = RequestMethod.GET)
+	@JsonRequestMapping(value = "/category", method = RequestMethod.GET)
+	@Cacheable("api.pet.category")
+	public List<String> getPetCategories() {
+		return petService.getPetCategories();
+	}
+
+	@JsonRequestMapping(value = "/status", method = RequestMethod.GET)
 	@Cacheable("api.pet.status")
-	public List<NamedObjectDTO> getPetStatuses() {
+	public List<String> getPetStatuses() {
 		return petService.getPetStatuses();
 	}
 

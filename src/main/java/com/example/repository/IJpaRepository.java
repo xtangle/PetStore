@@ -11,25 +11,25 @@ import com.example.bo.IStorable;
 @NoRepositoryBean
 public interface IJpaRepository<T extends IStorable, ID extends Serializable> extends JpaRepository<T, ID> {
 
-  @Override
-  <S extends T> S save(S entity);
+	@Override
+	<S extends T> S save(S entity);
 
-  @Override
-  T findOne(ID id);
+	@Override
+	T findOne(ID id);
 
-  @Override
-  List<T> findAll();
+	@Override
+	List<T> findAll();
 
-  @Override
-  long count();
+	@Override
+	long count();
 
-  @Override
-  void delete(T entity);
+	@Override
+	void delete(T entity);
 
-  @Override
-  void deleteAll();
+	@Override
+	void deleteAll();
 
-  @Override
-  boolean exists(ID id);
+	@Override
+	boolean exists(ID id);
 
 }

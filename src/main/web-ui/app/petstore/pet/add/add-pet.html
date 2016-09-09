@@ -1,0 +1,58 @@
+<div class="main-box centered">
+    <h1 class="main-header">Add a Pet</h1>
+
+    <p class="success-msg" ng-show="addPetCtrl.successMsg">{{addPetCtrl.successMsg}}</p>
+    <p class="error-msg" ng-show="addPetCtrl.errorMsg">{{addPetCtrl.errorMsg}}</p>
+
+    <div id="pet-form">
+        <p class="error-msg validation-error-msg" ng-show="addPetCtrl.petNameValidationErrorMsg">
+            {{addPetCtrl.petNameValidationErrorMsg}}
+        </p>
+        <div>
+            <label>Pet name: </label>
+            <input type="text" class="text-input" ng-model="addPetCtrl.petName"/>
+        </div>
+
+        <p class="error-msg validation-error-msg" ng-show="addPetCtrl.petCategoryValidationErrorMsg">
+            {{addPetCtrl.petCategoryValidationErrorMsg}}
+        </p>
+        <div>
+            <label>Category: </label>
+            <select class="select-input" ng-model="addPetCtrl.petCategory">
+                <option ng-repeat="category in addPetCtrl.categories">{{category}}</option>
+            </select>
+        </div>
+
+        <p class="error-msg validation-error-msg" ng-show="addPetCtrl.petStatusValidationErrorMsg">
+            {{addPetCtrl.petStatusValidationErrorMsg}}
+        </p>
+        <div>
+            <label>Status: </label>
+            <select class="select-input" ng-model="addPetCtrl.petStatus">
+                <option ng-repeat="status in addPetCtrl.statuses">{{status}}</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Tags: </label>
+            <textarea class="textarea-input" ng-model="addPetCtrl.petTags" rows="3"></textarea>
+            <p class="input-hint">(Separate tags with ';')</p>
+        </div>
+
+        <div>
+            <label>Photo URLs: </label>
+            <textarea class="textarea-input" ng-model="addPetCtrl.petPhotoURLs" rows="3" wrap="off"></textarea>
+            <p class="input-hint">(Enter one URL per line)</p>
+        </div>
+
+    </div>
+
+    <br/>
+    <a ui-sref="home">
+        <button type="button" class="btn btn-default btn-lg">Back</button>
+    </a>
+    <a ng-click="addPetCtrl.addPet()">
+        <button type="button" class="btn btn-success btn-lg">Add Pet</button>
+    </a>
+
+</div>

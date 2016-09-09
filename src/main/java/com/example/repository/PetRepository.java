@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.bo.CategoryBO;
 import com.example.bo.PetBO;
-import com.example.bo.PetStatusType;
+import com.example.bo.PetStatus;
 
 @Repository
 public interface PetRepository extends IJpaRepository<PetBO, Long> {
@@ -15,6 +15,6 @@ public interface PetRepository extends IJpaRepository<PetBO, Long> {
 
   List<PetBO> findByCategory(CategoryBO category);
 
-  List<PetBO> findByStatus(PetStatusType status);
+  List<PetBO> findByStatus(PetStatus status);
 
 }

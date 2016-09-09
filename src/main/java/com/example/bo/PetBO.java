@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,27 +39,14 @@ public class PetBO implements IStorable, Serializable {
 
   @ElementCollection()
   @CollectionTable(name = "PS_PETS_PHOTOURLS")
-  private List<String> photoURLs;
+  private List<String> photoURLs = new ArrayList<>();
 
   @ManyToMany(fetch = FetchType.EAGER)
-  private List<TagBO> tags;
+  private List<TagBO> tags = new ArrayList<>();
 
   @Column(name = "status")
   @Enumerated(EnumType.STRING)
-  private PetStatusType status;
-
-  public PetBO() {
-    this(null, null, null);
-  }
-
-  public PetBO(CategoryBO category, String name, PetStatusType status) {
-    super();
-    this.category = category;
-    this.name = name;
-    this.photoURLs = new ArrayList<>();
-    this.tags = new ArrayList<>();
-    this.status = status;
-  }
+  private PetStatus status;
 
   public long getId() {
     return id;
@@ -100,40 +88,12 @@ public class PetBO implements IStorable, Serializable {
     this.tags = tags;
   }
 
-  public PetStatusType getStatus() {
+  public PetStatus getStatus() {
     return status;
   }
 
-  public void setStatus(PetStatusType status) {
+  public void setStatus(PetStatus status) {
     this.status = status;
-  }
-
-  @Override
-  public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + (int) (id ^ (id >>> 32));
-    return result;
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-    if (obj == null)
-      return false;
-    if (getClass() != obj.getClass())
-      return false;
-    PetBO other = (PetBO) obj;
-    if (id != other.id)
-      return false;
-    return true;
-  }
-
-  @Override
-  public String toString() {
-    return "PetBO [id=" + id + ", category=" + category + ", name=" + name + ", photoURLs=" + photoURLs + ", tags=" + tags
-        + ", status=" + status + "]";
   }
 
 }

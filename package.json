@@ -21,7 +21,7 @@
     "node": ">=0.12.0"
   },
   "scripts": {
-    "preinstall": "npm link ./gulp",
+    "preinstall": "npm link ./gulp-micro-app",
     "test": "gulp test"
   },
   "browser": {
@@ -42,7 +42,6 @@
     "lodash": "4.15.0"
   },
   "devDependencies": {
-    "gulp-app-module": "0.0.1",
     "angular-mocks": "1.5.8",
     "browser-sync": "2.15.0",
     "gulp": "3.9.1",

@@ -3,7 +3,7 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 
-var gulpApp = require('gulp-app-module');
+var gulpApp = require('gulp-micro-app');
 
 gulp.task('default', function () {
     gutil.log('Gulp is running!', gutil.colors.magenta('123'));

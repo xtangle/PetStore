@@ -79,7 +79,7 @@ public class PetServiceImplTest {
 
 	@Test
 	public void addPet_DoesNotCreatePetAndReturnsFalse_WhenPetDTOIsNull() {
-		assertFalse(fixture.addPet(null));
+		assertNull(fixture.addPet(null));
 		verify(mockedPetRepository, times(0)).save(any(PetBO.class));
 	}
 
@@ -90,10 +90,13 @@ public class PetServiceImplTest {
 		when(mockedTagRepository.findByName(TAG_BO_1.getName())).thenReturn(null);
 		when(mockedTagRepository.findByName(TAG_BO_2.getName())).thenReturn(TAG_BO_2);
 		when(mockedPetTransformer.toBO(petDTO)).thenReturn(petBO);
-		boolean result = fixture.addPet(petDTO);
-		assertTrue(result);
-		verify(mockedTagRepository, times(1)).save(TAG_BO_1);
-		// verify(mockedTagRepository, times(0)).save(TAG_BO_2); // Fails, perhaps Mockito incompatible with Java 8 Lambdas?
+		when(mockedPetRepository.save(petBO)).thenReturn(petBO);
+		when(mockedPetTransformer.toDTO(petBO)).thenReturn(petDTO);
+
+		PetDTO actual = fixture.addPet(petDTO);
+		assertNotNull(actual);
+		assertEquals(petDTO, actual);
+		verify(mockedTagRepository, times(1)).save(any(TagBO.class));
 		verify(mockedPetRepository, times(1)).save(petBO);
 	}
 
@@ -104,24 +107,24 @@ public class PetServiceImplTest {
 		when(mockedTagRepository.findByName(TAG_BO_1.getName())).thenReturn(null);
 		when(mockedTagRepository.findByName(TAG_BO_2.getName())).thenReturn(TAG_BO_2);
 		when(mockedPetTransformer.toBO(petDTO)).thenReturn(petBO);
-		boolean result = fixture.addPet(petDTO);
-		assertFalse(result);
+		PetDTO actual = fixture.addPet(petDTO);
+		assertNull(actual);
 		verify(mockedPetRepository, times(0)).save(petBO);
 	}
 
 	@Test
 	public void deletePet_DoesNotDeletePetAndReturnsFalse_WhenPetIsNotFound() {
 		when(mockedPetRepository.exists(1L)).thenReturn(false);
-		boolean result = fixture.deletePet(1);
-		assertFalse(result);
+		boolean actual = fixture.deletePet(1);
+		assertFalse(actual);
 		verify(mockedPetRepository, times(0)).delete(1L);
 	}
 
 	@Test
 	public void deletePet_DeletesPetAndReturnsTrue_WhenPetIsFound() {
 		when(mockedPetRepository.exists(1L)).thenReturn(true);
-		boolean result = fixture.deletePet(1);
-		assertTrue(result);
+		boolean actual = fixture.deletePet(1);
+		assertTrue(actual);
 		verify(mockedPetRepository, times(1)).delete(1L);
 	}
 

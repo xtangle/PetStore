@@ -42,21 +42,6 @@ public class UserBO implements IStorable, Serializable {
   @Column(name = "user_status")
   private int status;
 
-  public UserBO() {
-    this(null, null, null, null, null, null);
-  }
-
-  public UserBO(String username, String firstName, String lastName, String email, String password, String phoneNumber) {
-    super();
-    this.username = username;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.password = password;
-    this.phoneNumber = phoneNumber;
-    this.status = 1;
-  }
-
   public long getId() {
     return id;
   }
@@ -119,34 +104,6 @@ public class UserBO implements IStorable, Serializable {
 
   public void setStatus(int status) {
     this.status = status;
-  }
-
-  @Override
-  public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + (int) (id ^ (id >>> 32));
-    return result;
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-    if (obj == null)
-      return false;
-    if (getClass() != obj.getClass())
-      return false;
-    UserBO other = (UserBO) obj;
-    if (id != other.id)
-      return false;
-    return true;
-  }
-
-  @Override
-  public String toString() {
-    return "UserBO [id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName
-        + ", email=" + email + ", password=" + password + ", phoneNumber=" + phoneNumber + ", status=" + status + "]";
   }
 
 }
