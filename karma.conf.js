@@ -5,12 +5,10 @@ function listFiles() {
     return [
         '.tmp/scripts/vendor.js',
         'node_modules/angular-mocks/angular-mocks.js',
-        'node_modules/moment/moment.js',
         'node_modules/lodash/lodash.js',
         '.tmp/scripts/index.js',
-        'src/**/*.mock.js',
-        'src/**/*.spec.js',
-        'src/**/*.html'
+        'src/main/web/**/*.spec.js',
+        'src/main/web/**/*.html'
     ];
 }
 
@@ -23,8 +21,8 @@ module.exports = function(config) {
         frameworks: ['jasmine'],
 
         ngHtml2JsPreprocessor: {
-            stripPrefix: 'src/',
-            moduleName: 'petApp'
+            stripPrefix: 'src/main/web/',
+            moduleName: 'com.example.petStoreApp'
         },
 
         browsers : ['PhantomJS'],
@@ -51,7 +49,7 @@ module.exports = function(config) {
         },
 
         preprocessors: {
-            'src/**/*.html': ['ng-html2js']
+            'src/main/web/**/*.html': ['ng-html2js']
         }
     };
 
