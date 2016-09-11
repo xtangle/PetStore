@@ -29,7 +29,7 @@ module com.example {
     public deletePet(): void {
       if (confirm('Are you sure you want to delete pet \'' + this.selectedPet.name + '\' (id: ' + this.selectedPet.id + ')?')) {
         this.clearMessages();
-        this.petResource.remove({petIdQuery: this.petIdQuery},
+        this.petResource.delete({petIdQuery: this.petIdQuery},
           () => {
             this.successMsg = 'Successfully deleted pet \'' + this.selectedPet.name + '\' (id: ' + this.selectedPet.id + ')';
             this.resetQuery();

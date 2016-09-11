@@ -14,12 +14,12 @@ module com.example.common {
     .config((PetServiceProvider: ResourceServiceProvider<IPet>) => {
       PetServiceProvider.setResource('api/pet');
       PetServiceProvider.withActions({
-        get: {
-          method: 'GET',
+        delete: {
+          method: 'DELETE',
           url: 'api/pet/:petIdQuery',
         },
-        remove: {
-          method: 'DELETE',
+        get: {
+          method: 'GET',
           url: 'api/pet/:petIdQuery',
         },
       });
