@@ -11,16 +11,16 @@ module com.example.common {
   ])
 
     .provider('PetService', ResourceServiceProvider)
-    .config((PetServiceProvider: ResourceServiceProvider<IPet, any>) => {
+    .config((PetServiceProvider: ResourceServiceProvider<IPet>) => {
       PetServiceProvider.setResource('api/pet');
       PetServiceProvider.withActions({
         get: {
           method: 'GET',
-          url: 'api/pet/:petId',
+          url: 'api/pet/:petIdQuery',
         },
-        getAll: {
-          isArray: true,
-          method: 'GET',
+        remove: {
+          method: 'DELETE',
+          url: 'api/pet/:petIdQuery',
         },
       });
     })

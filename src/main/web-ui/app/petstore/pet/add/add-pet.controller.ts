@@ -1,5 +1,7 @@
 module com.example {
   'use strict';
+  import IResource = angular.resource.IResource;
+  import IResourceClass = angular.resource.IResourceClass;
 
   const _ = require('lodash');
   const PET_TAG_DELIMITER: string = ';';
@@ -19,13 +21,13 @@ module com.example {
     petPhotoURLs: string;
 
     /* @ngInject */
-    constructor(public categories: Array<string>, public statuses: Array<string>, private petResource) {
+    constructor(public categories: Array<string>, public statuses: Array<string>, private petResource: IResourceClass<IResource<IPet>>) {
     }
 
-    public addPet(): boolean {
+    public addPet(): void {
       this.clearMessages();
       if (!this.validate()) {
-        return false;
+        return;
       }
 
       let petTagsArray: Array<string> =
@@ -42,26 +44,18 @@ module com.example {
         tags: petTagsArray,
       };
 
-      let addPetCtrl = this;
       this.petResource.save(pet,
-        function(savedPet: IPet) {
-          addPetCtrl.successMsg = 'Successfully added pet \'' + savedPet.name + '\' (id: ' + savedPet.id + ')';
-        },
-        function() {
-          addPetCtrl.errorMsg = 'Error: cannot add pet!';
-        }
-      );
-
-      this.clearFields();
-      return true;
+        response => this.successMsg = 'Successfully added pet \'' + response.name + '\' (id: ' + response.id + ')',
+        () => this.errorMsg = 'Error: could not add pet!');
+      this.clearInputFields();
     }
 
-    private clearFields(): void {
-      this.petName = '';
-      this.petCategory = '';
-      this.petStatus = '';
-      this.petTags = '';
-      this.petPhotoURLs = '';
+    private clearInputFields(): void {
+      this.petName = null;
+      this.petCategory = null;
+      this.petStatus = null;
+      this.petTags = null;
+      this.petPhotoURLs = null;
     }
 
     private clearMessages(): void {

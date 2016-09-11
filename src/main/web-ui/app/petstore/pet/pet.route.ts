@@ -22,8 +22,11 @@ module com.example {
           url: '/add',
         })
         .state('pet.find', {
-          controller: 'FindPetController',
+          controller: FindPetController,
           controllerAs: 'findPetCtrl',
+          resolve: {
+            petResource: (PetService: ResourceService<IPet>) => PetService.getResource(),
+          },
           templateUrl: 'app/petstore/pet/find/find-pet.html',
           url: '/find',
         });

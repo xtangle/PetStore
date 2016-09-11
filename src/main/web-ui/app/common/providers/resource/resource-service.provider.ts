@@ -1,12 +1,13 @@
 module com.example {
   'use strict';
   import IResourceClass = angular.resource.IResourceClass;
+  import IResource = angular.resource.IResource;
 
   export class ResourceService<T> {
-    constructor(private resource: IResourceClass<T>) {
+    constructor(private resource: IResourceClass<IResource<T>>) {
     }
 
-    getResource(): IResourceClass<T> {
+    getResource(): IResourceClass<IResource<T>> {
       return this.resource;
     }
   }
