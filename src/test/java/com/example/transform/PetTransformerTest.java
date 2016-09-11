@@ -96,7 +96,7 @@ public class PetTransformerTest {
 		assertNull(fixture.toBO(null));
 
 		List<String> tagNames = TAG_BO_LIST.stream()
-			.map(tagBO -> tagBO.getName())
+			.map(TagBO::getName)
 			.collect(Collectors.toList());
 		PetDTO petDTO = createPetDTO(PET_ID, PET_NAME, PET_STATUS.getName(), CATEGORY_BO.getName(), tagNames, PHOTO_URL_LIST);
 
