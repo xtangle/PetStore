@@ -32,11 +32,11 @@ public class PetResource {
 		return savedPet;
 	}
 
-	@JsonRequestMapping(value = "/{petIdString}", method = RequestMethod.GET)
-	public PetDTO getPet(@PathVariable String petIdString, HttpServletResponse response) throws IOException {
+	@JsonRequestMapping(value = "/{petIdQuery}", method = RequestMethod.GET)
+	public PetDTO getPet(@PathVariable String petIdQuery, HttpServletResponse response) throws IOException {
 		long petId;
 		try {
-			petId = Long.parseLong(petIdString);
+			petId = Long.parseLong(petIdQuery);
 		} catch (NumberFormatException e) {
 			response.sendError(Response.Status.BAD_REQUEST.getStatusCode(), e.toString());
 			return null;
@@ -49,11 +49,11 @@ public class PetResource {
 		return petDTO;
 	}
 
-	@JsonRequestMapping(value = "/{petIdString}", method = RequestMethod.DELETE)
-	public boolean deletePet(@PathVariable String petIdString, HttpServletResponse response) throws IOException {
+	@JsonRequestMapping(value = "/{petIdQuery}", method = RequestMethod.DELETE)
+	public boolean deletePet(@PathVariable String petIdQuery, HttpServletResponse response) throws IOException {
 		long petId;
 		try {
-			petId = Long.parseLong(petIdString);
+			petId = Long.parseLong(petIdQuery);
 		} catch (NumberFormatException e) {
 			response.sendError(Response.Status.BAD_REQUEST.getStatusCode(), e.toString());
 			return false;
