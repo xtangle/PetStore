@@ -1,5 +1,5 @@
-describe('ListItemServiceProvider', function () {
-    var fooService;
+describe('ListItemServiceProvider', function() {
+    var fixture;
     var response = ["foo", "bar"];
     var endPoint = '/api/foo';
     var httpBackend;
@@ -15,7 +15,7 @@ describe('ListItemServiceProvider', function () {
     beforeEach(configureTestProvider(endPoint));
 
     beforeEach(inject(function setUp(_PetCategoryService_) {
-        fooService = _PetCategoryService_;
+        fixture = _PetCategoryService_;
     }));
 
     beforeEach(inject(function mockBackend(_$httpBackend_) {
@@ -29,7 +29,7 @@ describe('ListItemServiceProvider', function () {
     }));
 
     it('should return all resource items', function () {
-        var actual = fooService.getAll();
+        var actual = fixture.getAll();
         var expected = response;
 
         httpBackend.flush();
