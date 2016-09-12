@@ -75,36 +75,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-<!--
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
-				<configuration>
-					<verbose>true</verbose>
-					<fork>true</fork>
-					<executable>${JAVA_1_8_HOME}/bin/javac</executable>
-					<compilerVersion>1.8</compilerVersion>
-				</configuration>
-			</plugin>-->
-			<!--      <plugin>
-							<groupId>com.github.eirslett</groupId>
-							<artifactId>frontend-maven-plugin</artifactId>
-							<version>1.0</version>
-							<configuration>
-								<installDirectory>${NODE_PATH}</installDirectory>
-							</configuration>
-
-							<executions>
-								<execution>
-									<id>gulp build</id>
-									<phase>generate-resources</phase>
-									<goals>
-										<goal>gulp</goal>
-									</goals>
-								</execution>
-							</executions>
-						</plugin>-->
 		</plugins>
 	</build>
 
