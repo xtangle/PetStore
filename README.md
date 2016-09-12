@@ -12,7 +12,7 @@ This project is written to work with MS SQL Server 2012 and OracleDB. For other 
 	    <db.username>db_username</db.username>
 	    <db.password>db_password</db.password>
 
-2. Run 'npm install' in project root.
+2. Run 'npm install' in project root to install the required npm packages.
 
 3. Run 'mvn spring-boot:run' to start the server-side component.
 
