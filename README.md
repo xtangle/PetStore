@@ -17,3 +17,13 @@ This project is written to work with MS SQL Server 2012 and OracleDB. For other 
 3. Run 'mvn spring-boot:run' to start the server-side component.
 
 4. Run 'gulp serve' to start the front-end component.
+
+## To Do
+
+- Add intergration test in back-end and unit tests for controllers in front-end.
+
+- Refactor stylesheets.
+
+- Add authentication/authorization using Spring Security.
+
+- Allow users to see a list of all pets and filter them by attributes.
