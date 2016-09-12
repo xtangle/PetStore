@@ -1,5 +1,5 @@
 # PetStore
-A sample pet store project using Spring Boot and AngularJS. Users can add/view pets by interacting with a front-end component written using AngularJS, and through a RESTful service and to a database.
+A sample pet store project using Spring Boot and AngularJS. Users can add/view pets by interacting with a front-end component written using AngularJS, through a RESTful service, and to a local database.
 
 This project is written to work with MS SQL Server 2012 and OracleDB. For other databases, additional dependencies may have to be installed.
 
